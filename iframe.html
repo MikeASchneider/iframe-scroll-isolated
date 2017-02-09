@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    body {
+      height: 100%;
+      background-color: red;
+    }
+    .modal-backdrop {
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    .modal {
+      width: 50%;
+      height: 300px;
+      background-color: white;
+      margin: auto;
+    }
+    .modal-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1>Inside iframe</h1>
+  <button id="add-content">Add content</button>
+  <div class="content-zone">
+    <h2 class="content-h2">Content!</h2>
+  </div>
+
+  <div class="modal-backdrop">
+    <div class="modal">
+      It's a modal baby
+      <button id="close-modal">close</button>
+    </div>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+  integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+  crossorigin="anonymous"></script>
+  <script>
+
+    function showModal() {
+      $('.modal-backdrop').show();
+      $('body').addClass('modal-open');
+    }
+    $('#close-modal').on('click', function() {
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').hide();
+    });
+    console.log('.content-zone');
+    $('#add-content').on('click', function() {
+      console.log('adding content');
+      $('.content-h2').first().clone().appendTo('.content-zone');
+      showModal();
+    });
+  </script>
+</body>
+</html>
