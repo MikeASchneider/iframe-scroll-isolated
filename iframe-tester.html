@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    html, body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow-y: hidden;
+    }
+    .toolbar {
+      height: 60px;
+    }
+    #iframe {
+      height: calc(100% - 60px);
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+<div class="toolbar">
+  <input size="100" type="text" name="url" id="url" placeholder="URL">
+  <button onclick="loadIframe()">load iframe</button>
+</div>
+<iframe src="" id="iframe"></iframe>
+<script>
+  var iframe = document.getElementById('iframe');
+  var url = document.getElementById('url');
+  function loadIframe() {
+    iframe.src = url.value;
+  }
+</script>
+</body>
+</html>
